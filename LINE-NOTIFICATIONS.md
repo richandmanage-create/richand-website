@@ -24,12 +24,15 @@
 
 ## 驗證
 
+2026-11-19 已於正式環境啟用。本人建立一筆明確標示的通知驗證申請，會員／顧問各一則均實際收到；資料庫兩筆工作 accepted、各嘗試一次、無錯誤。本人同時具有會員及顧問身分，這次是同一真實帳號的兩種角色收訊測試，未宣稱完成雙帳號測試。測試預約已取消。每 10 分鐘排程 Active，手動執行佇列計數皆 0，沒有重送。
+
 ```sh
 pnpm test
 pnpm build
 node --env-file=.env.local scripts/migrate.mjs
 node --env-file=.env.local --experimental-strip-types scripts/verify-notifications.mjs
 node scripts/production-smoke.mjs
+node --env-file=.env.local scripts/verify-live-notifications.mjs
 ```
 
 資料庫測試注入模擬 LINE 回應，不發送真實訊息，所有 fixtures 最後回滾。涵蓋雙收件人、重複提交、重疊領取、當機恢復、固定 retry key、重試延遲、過期與取消抑制，以及兩年清理。

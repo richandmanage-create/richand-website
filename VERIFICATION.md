@@ -8,15 +8,18 @@
 | 建置與型別 | Next.js production build 成功，20 個頁面建置完成 |
 | 單元測試 | 13 項：原 7 項及 LINE 訊息、去重、錯誤分類、收件識別碼、資料最小化與延遲策略 |
 | LINE 通知資料庫 | 雙收件人交易、重複入列、重疊領取、固定 key 與當機恢復、延遲、取消／過期抑制及兩年清理通過；模擬傳輸，未發真實訊息 |
+| 正式 LINE 通知 | Production 申請交易建立 member／advisor 兩筆工作，均 accepted、attempts=1、無錯誤；本人確認手機兩則均收到 |
+| 通知測試清理 | 明確標示「LINE通知驗證・請勿聯繫」的申請已由會員取消；顧問工作台顯示已交付 LINE 2、等待 0、需處理 0 |
+| 通知排程 | /api/cron/notifications：Active，*/10 * * * * UTC；手動執行紀錄 accepted=0、retry=0、failed=0，未重送已完成通知；匿名請求 401 |
 | 公開路由 | 正式首頁、服務、房源、案例、文章、課程、預約、登入、隱私、robots、sitemap 皆 200 |
 | 網域 | HTTPS 200，HTTP → HTTPS 308，www → apex 308 |
-| OAuth 啟動 | 正確 LINE Channel 與回呼，openid/profile、state、nonce、PKCE S256 |
+| OAuth 啟動 | 正確 LINE Channel 與回呼，openid/profile、state、nonce、PKCE S256；正式啟用後 bot_prompt=normal，預約／會員頁顯示正確加好友連結 |
 | 真實 LINE 登入 | 使用者手機驗證後回到 /member；資料庫建立唯一會員 |
 | 登出 | 登出回首頁；再次進入 /member 導回 /login |
 | 預約端到端 | 瀏覽器送出 → 資料庫儲存 → 會員顯示 pending → 顧問 confirmed → 會員 cancelled |
 | 顧問權限 | 內部 UUID 白名單帳號能開啟 /admin；匿名 API 為 403 |
 | 預約防護 | 非本站 Origin 403；未登入建立／取消 401 |
-| 真實資料庫 | TLS 憑證驗證、3 張表、寫入、外部會員條件無法更新、重複 UUID 唯一約束、交易回滾 |
+| 真實資料庫 | TLS 憑證驗證、原 3 張表及新增 booking_notifications、寫入、外部會員條件無法更新、重複 UUID 唯一約束、交易回滾 |
 | 保存政策 | 2 年清理測試通過，需保留預約的會員仍存在；所有測試交易回滾 |
 | 清理正式端點 | 無 Token 401；正確 Token 200、各刪除數 0 |
 | 清理排程 | Vercel /api/cron/retention：Active，0 19 * * * UTC |
@@ -37,9 +40,12 @@ pnpm build
 node scripts/production-smoke.mjs
 node --env-file=.env.local --experimental-strip-types scripts/verify-db.mjs
 node --env-file=.env.local scripts/verify-live-records.mjs
+node --env-file=.env.local --experimental-strip-types scripts/verify-notifications.mjs
+node --env-file=.env.local scripts/verify-live-notifications.mjs
 ```
 
 verify-live-records 是唯讀查詢，核對本次標示為系統驗證的取消紀錄及顧問確認稽核。verify-db 在交易內建立 fixtures，最後 rollback，不留下測試資料。
+verify-live-notifications 唯讀核對已取消的通知測試申請、兩種收件角色、accepted 及各一次嘗試；手機實際收件另由本人確認，不由 API 狀態推定。正式煙霧測試另以 EXPECT_LINE_NOTIFICATIONS=true 驗證加好友入口與 OAuth 參數。
 
 ## 未涵蓋與維護
 
