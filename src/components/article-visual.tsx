@@ -6,7 +6,6 @@ const visualLabels: Record<string, string> = {
 
 export default function ArticleVisual({slug,number}:{slug:string;number:number}) {
  return <div className={'journal-visual journal-visual-'+number} aria-hidden="true">
-  <span className="journal-visual-number">0{number}</span>
   <svg viewBox="0 0 360 230" fill="none" className="journal-illustration">
    <circle cx="184" cy="115" r="83" fill="#e6ddca"/>
    <path d="M39 191H322M59 202H299" stroke="#cfc4b0" strokeWidth="1"/>
