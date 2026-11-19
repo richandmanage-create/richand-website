@@ -4,11 +4,12 @@ import LineProvider from 'next-auth/providers/line';
 import { getServerSession } from 'next-auth';
 import { db } from './db';
 import { authReady } from './config';
+import { notificationsEnabled } from './line-notifications';
 export const authOptions:NextAuthOptions={
  secret:process.env.NEXTAUTH_SECRET,
  session:{strategy:'jwt',maxAge:60*60*24},
  pages:{signIn:'/login',error:'/login'},
- providers:[LineProvider({clientId:process.env.LINE_CHANNEL_ID??'',clientSecret:process.env.LINE_CHANNEL_SECRET??process.env.LINE_CLIENT_SECRET??'',authorization:{params:{scope:'openid profile'}},checks:['state','nonce','pkce']})],
+ providers:[LineProvider({clientId:process.env.LINE_CHANNEL_ID??'',clientSecret:process.env.LINE_CHANNEL_SECRET??process.env.LINE_CLIENT_SECRET??'',authorization:{params:{scope:'openid profile',...(notificationsEnabled()?{bot_prompt:'normal'}:{})}},checks:['state','nonce','pkce']})],
  callbacks:{
   async signIn(){return authReady();},
   async jwt({token,account,user}){
