@@ -1,0 +1,3 @@
+import { PageIntro,CTA } from '@/components/shell';
+export const metadata={title:'空間改造'};
+export default function Page(){return <><PageIntro eyebrow="SPACE RENEWAL" title="讓熟悉的空間，重新被看見。" description="從日常使用的細節，思考動線、機能與空間氛圍。"/><section className="wrap content-area"><div className="notice">以下呈現空間改造的設計想像，圖片為 AI 生成示意，非已完成案件或實績照片。</div><div className="service-list">{[['居住空間的重新梳理','從採光、收納與動線開始，讓每一個角落回應日常。','art-1'],['工作與接待的平衡','讓辦公、洽談與休息各有位置，也保留未來調整的彈性。','art-2']].map(([title,text,art])=><article key={title} className="panel"><img className="case-photo" src="/images/richand-living-room.webp" alt="精裝客廳 AI 空間示意" width="1536" height="1024"/><span className="badge">規劃方向示意</span><h2>{title}</h2><p>{text}</p></article>)}</div></section><CTA/></>}
