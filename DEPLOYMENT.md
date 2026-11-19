@@ -32,7 +32,7 @@ ADMIN_MEMBER_IDS 為經實際登入確認的內部會員 UUID，不可改用顯�
 
 ## 發布與回復
 
-以 pnpm-lock.yaml 安裝，`pnpm test` 與 `pnpm build` 通過後部署。程式來源可由 GitHub 或 scripts/deployment-files.mjs 整理後透過 Vercel API 發布。
+GitHub 儲存庫 richandmanage-create/richand-website 已連接至既有 Vercel 專案；提交 main 會觸發正式部署。以 pnpm-lock.yaml 安裝，Vercel 建置指令為 `pnpm test && pnpm build`，測試與建置成功才發布。其他分支使用 Preview；正式敏感變數僅限 Production。
 程式碼回復可使用 Vercel 舊部署 promotion；資料庫變更需另行評估，不可視為隨程式碼回復。
 如需暫停會員服務，將 MEMBER_SERVICES_ENABLED=false 後重新部署。
 
