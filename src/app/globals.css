@@ -28,6 +28,12 @@
 .service-card:hover .service-discover,.service-card:focus-visible .service-discover{color:#142e3c;background:#e3c09a;border-color:#e3c09a}
 .property-inquiry{margin-top:23px;font-size:12px;letter-spacing:.04em}
 .feedback-signature{font-family:Georgia,'Noto Serif TC',serif;font-size:17px;letter-spacing:.05em}
+.feedback-grid{grid-auto-rows:1fr}
+.feedback-card h3{min-height:3.1em}
+.feedback-copy{flex:1}
+.feedback-card>.feedback-copy+.feedback-signature{margin-top:28px}
+.button.line-friend-button{display:flex;width:100%;min-height:52px;margin-top:20px;background:#e87524;border-color:#e87524;color:#142e3c;font-weight:600;letter-spacing:.08em}
+.button.line-friend-button:hover{background:#f28a42;border-color:#f28a42}
 .journal-visual{height:250px;margin-bottom:24px;position:relative;overflow:hidden;border:1px solid #d7cfbd;background-color:#f5f1e7;background-image:linear-gradient(#c9bca51a 1px,transparent 1px),linear-gradient(90deg,#c9bca51a 1px,transparent 1px),radial-gradient(ellipse at 80% 20%,#eadbc8a0,transparent 60%);background-size:24px 24px,24px 24px,100% 100%}
 .journal-visual-2{background-color:#f1ece1}
 .journal-visual-3{background-color:#ecefe4}
