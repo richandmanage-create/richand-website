@@ -1,0 +1,48 @@
+{
+  "created": "2026-11-19",
+  "mode": "built-in image_gen",
+  "usage": "Reference-based concept interiors; not verified property photographs.",
+  "images": [
+    {
+      "key": "hero",
+      "output": "public/images/richand-hero-v4.webp",
+      "references": [
+        "p1.webp",
+        "p2.jpg"
+      ],
+      "prompt": "Use case: photorealistic-natural. Create a refined editorial interior photograph for the RICHAND Taiwanese property advisory homepage. The two input photos are style and realism references, not properties to advertise. Make a new cohesive high-end but believable Taiwanese apartment living room inspired by their warm oak, creamy upholstery, restrained cabinetry and excellent proportions. Wide 3:2 image, eye level camera, straight vertical lines, realistic daylight from side windows, natural soft shadows, warm ivory sofa, darker oval coffee table, linen, crafted oak and subtle stone, a single living plant. Include nuanced materials, subtle imperfections, restrained lived-in styling, refined depth. Preserve natural photographic realism, avoid generic CGI or showroom perfection, exaggerated cavernous dimensions, gold luxury clichés and implausible geometry. No text, logos, watermark, collage or border. Image will appear in a tall right-hand hero crop so keep sofa and focal point near center."
+    },
+    {
+      "key": "daan",
+      "output": "public/images/richand-daan-v4.webp",
+      "references": [
+        "p2.jpg"
+      ],
+      "prompt": "Use case: lighting-weather / precise-object-edit. Edit the input apartment photo into a premium architectural editorial photograph for a concept property card. Preserve the room's actual spatial layout, oak perforated screen at left, dining table in foreground, teal chair, sofa at back, glass partition, windows and realistic compact dimensions. Improve exposure and neutral warm white balance, recover daylight details, richer fine wood and linen textures, gentle contrast, straight vertical perspective. Carefully tidy visual clutter and refine the styling with a simple ceramic vase and open book. Natural soft daylight and authentic materials; no plasticky 3D look, no excessive HDR, no grand enlargement. Landscape 3:2 framing. No words, labels, logos or watermarks."
+    },
+    {
+      "key": "xinyi",
+      "output": "public/images/richand-xinyi-v4.webp",
+      "references": [
+        "S__2416669_0.jpg"
+      ],
+      "prompt": "Use case: precise-object-edit. Edit the supplied real narrow apartment living room into a sophisticated yet believable editorial property concept photograph. Preserve exact long-room geometry, concrete-textured ceiling and left wall, kitchen at rear, wood flooring, TV at left and charcoal sofa at right. Correct wide-angle distortion and vertical lines, balance daylight and warm ambient light, retain authentic concrete grain rather than rendering it smooth. Tastefully improve with a neutral textured rug in front of sofa, small elegant oak coffee table, restrained cream/olive cushions, and neatly styled rear dining area. Hide incidental cables and loose clutter. Keep achievable modest apartment scale, photographic naturalism, genuine surface imperfections, calm warmth. Landscape 3:2. No text, logos, collage, watermark or people."
+    },
+    {
+      "key": "zhonghe",
+      "output": "public/images/richand-zhonghe-v4.webp",
+      "references": [
+        "S__2416666.jpg"
+      ],
+      "prompt": "Use case: precise-object-edit. Professionally retouch this real small bedroom for a refined property concept card while preserving the actual compact bedroom layout, bed at right, desk at left, charcoal framed window, wooden floor and green chair. Correct perspective, lift shadows, neutralize yellow cast, add soft believable morning window light. Neaten the grey-beige linen bedding, replace clutter with a restrained reading setup and ceramic table lamp, improve plant styling. Oak, warm ivory, sage and taupe, fine material texture, natural softness with clear detail. Retain believable furniture scale and imperfections, avoid CGI gloss or unrealistically enlarging room. Landscape 3:2 with bed and desk both readable. No text, watermark or logos; small wall art may be a simple abstract print."
+    },
+    {
+      "key": "tamsui",
+      "output": "public/images/richand-tamsui-v4.webp",
+      "references": [
+        "S__4079758.jpg"
+      ],
+      "prompt": "Use case: precise-object-edit. Retouch the supplied real living room as an elegant, warm and photoreal editorial interior concept image. Preserve window and wood blind arrangement at rear, low white slipcover sofa on left, paper pendant, dark wood floor and room proportions. Brighten naturally while keeping window details; refine sofa linen, add subtle taupe cushions, a warm neutral textured rug and replace the basic white coffee table with a restrained rounded oak coffee table. Remove foreground bags, shoes and loose cables, tidy right TV cabinet. Warm afternoon daylight, believable soft shadows, carefully balanced highlights, natural film-like tones and true material texture. Keep a real comfortable Taiwanese apartment atmosphere, not a 3D luxury showroom. Landscape 3:2. No text, logos, collage, people or watermark."
+    }
+  ]
+}
