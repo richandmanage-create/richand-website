@@ -2,8 +2,8 @@
 
 Next.js App Router + TypeScript + PostgreSQL + LINE Login。
 
-- 正式網站：https://richand.com.tw
-- 顧問工作台：https://richand.com.tw/admin（限已設定的管理員）
+- 正式網站：[richand.com.tw](https://richand.com.tw)
+- 顧問工作台：[管理預約](https://richand.com.tw/admin)（限已設定的管理員）
 - 聯絡：richandmanage@gmail.com / 02-6609-0104
 
 ## 開發與驗證
