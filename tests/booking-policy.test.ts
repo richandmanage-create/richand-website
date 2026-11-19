@@ -1,0 +1,11 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { bookingSchema,dateBounds,sameOrigin,taipeiDate } from '../src/lib/booking-policy.ts';
+const now=new Date('2026-11-17T08:00:00Z');
+const valid={name:'測試會員',phone:'0912345678',topic:'房產顧問',date:'2026-11-18',period:'上午 09:00–12:00',notes:'',consent:true,requestId:'a914c975-0c60-47fa-81f5-3d1a2fc73972'};
+test('accepts a valid consultation request',()=>assert.equal(bookingSchema(now).safeParse(valid).success,true));
+test('normalizes ordinary telephone formatting',()=>{for(const phone of ['02-6609-0104','(02) 6609 0104'])assert.equal(bookingSchema(now).parse({...valid,phone}).phone,'0266090104');});
+test('rejects invalid dates, past dates and dates beyond horizon',()=>{for(const date of ['2026-11-17','2026-02-30','2027-02-30','2027-03-01','not-a-date'])assert.equal(bookingSchema(now).safeParse({...valid,date}).success,false,date);});
+test('requires consent, a real request UUID and validated contact fields',()=>{for(const patch of [{consent:false},{requestId:'fake'},{phone:'hello'},{name:'a'},{notes:'x'.repeat(1001)},{topic:'arbitrary'},{period:'midnight'}])assert.equal(bookingSchema(now).safeParse({...valid,...patch}).success,false);});
+test('uses Taipei date across UTC midnight boundaries',()=>{assert.equal(taipeiDate(new Date('2026-11-17T16:01:00Z')),'2026-11-18');assert.equal(dateBounds(new Date('2026-11-17T16:01:00Z')).min,'2026-11-19');});
+test('rejects missing and hostile origins',()=>{assert.equal(sameOrigin('https://richand.com.tw','https://richand.com.tw'),true);for(const origin of [null,'null','https://evil.example','https://richand.com.tw.evil.example'])assert.equal(sameOrigin(origin,'https://richand.com.tw'),false);assert.equal(sameOrigin('https://richand.com.tw',undefined),false);});
