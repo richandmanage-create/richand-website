@@ -12,7 +12,8 @@
 - 正式瀏覽器流程：送出測試申請、會員讀取、顧問確認、會員取消；資料庫與顧問操作紀錄均已驗證。
 - 原網站驗證申請明確標示「系統驗證・請勿聯繫」，狀態已取消；該次未發送通知。
 - LINE 自動通知已正式啟用：會員申請通知、顧問新申請通知各一則。另一次通知驗證申請的兩則訊息均由本人確認實際收到，資料庫各 accepted、attempts=1；測試申請已取消。
-- /api/cron/notifications 每 10 分鐘 Active；手動執行紀錄 accepted=0、retry=0、failed=0，未重送已完成的通知。
+- /api/cron/notifications 補送排程由每 10 分鐘調整為每 30 分鐘，減少免費資料庫空轉；正常預約仍立即發送。原正式手動執行紀錄 accepted=0、retry=0、failed=0，未重送已完成的通知。
+- 顧問工作台新增 LINE 本月用量／剩餘額度與 80% 提醒，避免到用完才發現通知中斷；不自動購買方案。
 - 2 年資料保存政策與自動清理已實作，CRON_SECRET 保護端點；每日 UTC 19:00 排程 Active，正式端點驗證 200。
 - secrets 以 Vercel Production sensitive 變數保存；未提交至程式碼。
 - GoDaddy A @ = 216.198.79.1；CNAME www = ce485d5375ba7b90.vercel-dns-017.com。NS、DMARC 等其餘紀錄保留。
