@@ -28,7 +28,7 @@ Secrets 僅存於 Vercel 的 sensitive 變數；本機 .env.local 與 verificati
 
 會員送出後為 pending；顧問在 /admin 查看聯絡資料，以電話完成聯繫後標記 confirmed，再於服務結束後標記 completed。取消可由會員或顧問操作。
 ADMIN_MEMBER_IDS 為經實際登入確認的內部會員 UUID，不可改用顯示名稱辨識。新增管理員前應核對本人身分。
-本版不會自動寄送 LINE 或電子郵件通知，顧問需定期查看工作台。
+LINE 通知會在新申請儲存後發送給會員及 ADMIN_MEMBER_IDS 對應顧問；雙方需加入官方帳號為好友。電子郵件不自動發送，顧問仍需定期查看工作台。設定、額度與重試排程見 LINE-NOTIFICATIONS.md。
 
 ## 發布與回復
 

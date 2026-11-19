@@ -35,6 +35,6 @@ pnpm build
 - 每日清理逾 2 年的資料；`CRON_SECRET` 保護排程端點。規則詳見 /privacy。
 - sitemap、robots 與頁面 metadata。
 
-預約為希望聯繫時段申請，並非行事曆即時鎖位。顧問需至工作台處理並以電話聯繫；不自動寄信或發送 LINE 訊息。
+預約為希望聯繫時段申請，並非行事曆即時鎖位。啟用 LINE 通知後，會員與顧問會收到申請通知；顧問仍需至工作台處理並聯繫確認實際時間。不自動寄信。通知設定與重試規則見 [LINE-NOTIFICATIONS.md](LINE-NOTIFICATIONS.md)。
 
 部署、維護及驗證紀錄見 [DEPLOYMENT.md](DEPLOYMENT.md) 與 [VERIFICATION.md](VERIFICATION.md)。
